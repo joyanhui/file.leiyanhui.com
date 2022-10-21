@@ -19,3 +19,5 @@ https://file.leiyanhui.com/linux.pub
 https://github.com/joyanhui/file.leiyanhui.com/tree/windows_font
 
       git clone -b windows_font https://github.com/joyanhui/file.leiyanhui.com.git
+      
+      # wget -c https://github.com/joyanhui/file.leiyanhui.com/archive/refs/heads/windows_font.zip
