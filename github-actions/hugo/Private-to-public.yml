@@ -1,0 +1,53 @@
+name: Hugo-github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          # extended: true
+
+      - name: Build
+        run: |
+          # 压缩输出
+          hugo --minify
+      - name: sysnc and deploy
+        env:
+            FOR_PAGE_SSHKEY: ${{ secrets.FOR_PAGE_SSHKEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$FOR_PAGE_SSHKEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          
+          #ls
+          cd public
+          #ls
+          rm -rf .git*
+          echo "dev.leiyanhui.com">CNAME
+          git init
+          git config user.name "joyanhui"
+          git config user.email "joyanhui@qq.com"
+          git add -A
+          git commit -m "自动生成  $GITHUB_SHA to gh-pages"
+          #git remote rm origin
+          git remote add origin git@github.com:joyanhui/dev.leiyanhui.com-page.git
+          git remote -v
+          #推送
+          git push origin master:main -f -q
+
+

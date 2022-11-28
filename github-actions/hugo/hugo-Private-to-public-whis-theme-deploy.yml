@@ -1,0 +1,71 @@
+name: Deploy to Github Pages
+
+on:
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Cache Hugo resources
+              uses: actions/cache@v2
+              env:
+                  cache-name: cache-hugo-resources
+              with:
+                  path: resources
+                  key: ${{ env.cache-name }}
+
+            - uses: actions/setup-go@v2
+              with:
+                  go-version: "^1.17.0"
+            - run: go version
+
+            - name: Cache Go Modules
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      ~/.cache/go-build
+                      ~/go/pkg/mod
+                  key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+                  restore-keys: |
+                      ${{ runner.os }}-go-
+            - name: Setup Hugo
+              uses: peaceiris/actions-hugo@v2
+              with:
+                  hugo-version: "latest"
+                  extended: true
+
+            - name: Build
+              run: hugo --minify --gc
+              
+            - name: sysncanddeploy
+              env:
+                    FOR_PAGE_SSHKEY: ${{ secrets.FOR_PAGE_SSHKEY }}
+              run: |
+                  mkdir -p ~/.ssh/
+                  echo "$FOR_PAGE_SSHKEY" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+                  ssh-keyscan github.com >> ~/.ssh/known_hosts
+                  #处理文件
+                  cp assets/favicon.ico public/favicon.ico
+                  cd public
+                  #清理git
+                  rm -rf .git*
+                  #处理别名
+                  echo "dev.leiyanhui.com">CNAME
+                  git init
+                  git config user.name "joyanhui"
+                  git config user.email "joyanhui@qq.com"
+                  git add -A
+                  git commit -m "自动生成  $GITHUB_SHA to gh-pages"
+                  #git remote rm origin
+                  git remote add origin git@github.com:joyanhui/dev.leiyanhui.com-page.git
+                  git remote -v
+                  #推送
+                  git push origin master:main -f -q
