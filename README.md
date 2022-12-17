@@ -37,6 +37,7 @@ https://github.com/joyanhui/file.leiyanhui.com/tree/windows_font
 [https://github.com/joyanhui/file.leiyanhui.com/tree/dwm-wallpaper](https://github.com/joyanhui/file.leiyanhui.com/tree/dwm-wallpaper)
 
             #wget -c https://github.com/joyanhui/file.leiyanhui.com/archive/refs/heads/dwm-wallpaper.zip
+            wget https://ghproxy.com/https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/dwm-wallpaper/zifa.jpg
 ### 其他
 
 [https://github.com/joyanhui/file.leiyanhui.com](https://github.com/joyanhui/file.leiyanhui.com)
