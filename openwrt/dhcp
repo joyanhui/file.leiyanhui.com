@@ -1,0 +1,85 @@
+
+config dnsmasq
+	option domainneeded '1'
+	option localise_queries '1'
+	option local '/lan/'
+	option domain 'lan'
+	option expandhosts '1'
+	option authoritative '1'
+	option readethers '1'
+	option leasefile '/tmp/dhcp.leases'
+	option ednspacket_max '1232'
+	option port '53'
+	option dns_redirect '1'
+	option allservers '1'
+	option min_ttl '3600'
+	option dnsforwardmax '10000'
+	option localservice '0'
+	option rebind_protection '0'
+	option localuse '1'
+	list server '127.0.0.1#7874'
+	option noresolv '1'
+	option cachesize '0'
+	option filter_aaaa '0'
+
+config dhcp 'lan'
+	option interface 'lan'
+	option start '100'
+	option limit '150'
+	option leasetime '12h'
+	option dhcpv4 'server'
+	option ra_slaac '1'
+	list ra_flags 'managed-config'
+	list ra_flags 'other-config'
+	option force '1'
+	option ra 'hybrid'
+	option ndp 'hybrid'
+	option dhcpv6 'hybrid'
+
+config dhcp 'wan'
+	option interface 'wan'
+	option ignore '1'
+
+config odhcpd 'odhcpd'
+	option maindhcp '0'
+	option leasefile '/tmp/hosts/odhcpd'
+	option leasetrigger '/usr/sbin/odhcpd-update'
+	option loglevel '4'
+
+config srvhost
+	option srv '_vlmcs._tcp'
+	option target 'N2600'
+	option port '1688'
+	option class '0'
+	option weight '100'
+
+config host
+	option name 'K2P'
+	option dns '1'
+	option mac '74:7D:24:BE:44:F4'
+	option ip '10.1.1.2'
+
+config host
+	option name 'arch-aio'
+	option dns '1'
+	option mac 'E2:51:89:8E:65:D0'
+	option ip '10.1.1.5'
+
+config host
+	option name 'ezbook'
+	option dns '1'
+	option mac 'E0:E1:A9:93:EB:A9'
+	option ip '10.1.1.200'
+
+config host
+	option name 'pve-win10'
+	option dns '1'
+	option ip '10.1.1.10'
+	option mac '00:00:00:00:00:10'
+
+config host
+	option name 'pve-win1-game'
+	option dns '1'
+	option mac '00:00:00:00:00:20'
+	option ip '10.1.1.9'
+
