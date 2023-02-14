@@ -13,6 +13,8 @@ file.leiyanhui.com
 
 https://file.leiyanhui.com/linux.pub 
 
+私玥：https://github.com/joyanhui/private_file/blob/main/ssh%E9%92%A5/linux
+
 ## 分支
 
 ### windows 字体
