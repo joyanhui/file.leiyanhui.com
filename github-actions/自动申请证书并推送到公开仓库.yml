@@ -1,0 +1,63 @@
+name: Auto ACME
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 17 20 * *"
+  watch:
+    types: [started]
+
+env:
+    ACME: /home/runner/.acme.sh/acme.sh
+    PUBHUB: /你的用户名/仓库地址
+    DNSAPI: ${{ secrets.DNSAPI }}
+    ZIPPASSWORD: ${{ secrets.ZIPPASSWORD }}
+    MYGITHUBKEY: ${{ secrets.MYGITHUBKEY }}
+    EMAIL: 你的邮箱地址@qq.com
+    TZ: Asia/Shanghai
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 安装和初始化acme.sh
+      run: |
+        curl  https://get.acme.sh | sh
+        echo "$DNSAPI" >> /home/runner/.acme.sh/account.conf
+        $ACME  --register-account -m $EMAIL 
+    - name: 开始获取证书
+      run: |
+        mkdir -p ./ssl
+        #如果要处理多个域名，复制后面三行即可 默认使用zerossl的证书 其他参数参考acme.sh文档
+        mydomian=你的域名.com  
+        $ACME --issue  --dns dns_dp -d ${mydomian} -d *.${mydomian} 
+        $ACME --installcert -d ${mydomian} --key-file ./ssl/${mydomian}.key --fullchain-file ./ssl/${mydomian}.cer
+
+    - name: 带密码打包证书
+      run: |
+        zip -r acme.zip /home/runner/.acme.sh -P $ZIPPASSWORD
+        zip -r ssl.zip ssl -P $ZIPPASSWORD
+    - name: 提交加密后的证书到公开库
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$MYGITHUBKEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        rm -rf .git* && rm -rf README.md
+        echo "处理公开库的readme文件"
+        wget https://raw.githubusercontent.com/$PUBHUB/main/README.md
+        echo -e "\n证书最后更新： $(date '+%Y-%m-%d %H:%M:%S')">>README.md
+        git init
+        git config --global user.name "githubactions bot"
+        git config --global user.email "$ACME"
+        git add ./ssl.zip  ./README.md ./acme.zip 
+        git commit -m "证书自动更新 on $(date '+%Y-%m-%d %H:%M:%S')"
+        git remote add origin git@github.com:$PUBHUB.git
+        git remote -v
+        git push origin master:main -f -q
