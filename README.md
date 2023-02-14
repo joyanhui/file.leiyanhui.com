@@ -5,17 +5,16 @@ file.leiyanhui.com
 
 
 基于dnspod 分流和 cdn加速
+## 私密仓库
+https://github.com/joyanhui/private_file/
 ## ssl
-
 https://github.com/joyanhui/ssl
-
 ## 公开文件
 
 ### 常用的一个公钥  私钥不在这
 
 https://file.leiyanhui.com/linux.pub 
 
-私玥：https://github.com/joyanhui/private_file/blob/main/ssh%E9%92%A5/linux
 
 ## 分支
 
