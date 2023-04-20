@@ -27,7 +27,7 @@ https://github.com/joyanhui/file.leiyanhui.com/tree/windows_font
 
             su
             mkdir /usr/share/fonts/WindowsFonts
-            cd /usr/share/fonts/WindowsFonts
+            
             git clone -b windows_font https://github.com/joyanhui/file.leiyanhui.com.git
             # wget -c https://github.com/joyanhui/file.leiyanhui.com/archive/refs/heads/windows_font.zip
             # wget -c https://ghproxy.com/https://github.com/joyanhui/file.leiyanhui.com/archive/refs/heads/windows_font.zip
@@ -35,7 +35,17 @@ https://github.com/joyanhui/file.leiyanhui.com/tree/windows_font
             mv file.leiyanhui.com-windows_font/* .
             rm -rf file.leiyanhui.com-windows_font/
             fc-cache -f
+#### 单独雅黑 
+ msyh.ttc标 msyhbd.ttc粗 msyhl.ttc细
 
+```
+su
+mkdir /usr/share/fonts/WindowsFonts && cd /usr/share/fonts/WindowsFonts
+wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyh.ttc
+wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyhbd.ttc
+wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyhl.ttc
+fc-cache -f
+```
             
 
 ### 一组壁纸
