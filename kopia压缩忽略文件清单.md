@@ -1,4 +1,4 @@
-可以在kopiaUI中直接粘贴
+可以在kopiaUI中直接粘贴 ，另外添加 .iso .vhd.vhdx.vdi.qcow2.vmdk
 
 ```
 7[Zz]
@@ -362,6 +362,12 @@
 .MOV
 .mkv
 .MKV
+.iso
+.vhd
+.vhdx
+.vdi
+.qcow2
+.vmdk
 ```
 
 
