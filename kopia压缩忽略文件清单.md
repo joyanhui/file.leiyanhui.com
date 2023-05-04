@@ -1,6 +1,6 @@
 可以在kopiaUI中直接粘贴 ，另外添加 .iso .vhd.vhdx.vdi.qcow2.vmdk
-Minimum File Size : 2048  2k
-Max File Size :524288000  500M
+`Minimum File Size : 2048  2k`  `Max File Size :524288000  500M`
+
 ```
 7[Zz]
 .alz
