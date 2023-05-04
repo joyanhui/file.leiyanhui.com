@@ -362,6 +362,4 @@
 .MOV
 .mkv
 .MKV
-
-orl0, CoordSpace, quctex, remus-selea, icepic, and ClementNerma reacted with thumb
 ```
