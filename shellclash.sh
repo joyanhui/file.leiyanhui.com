@@ -32,10 +32,13 @@ cat > /etc/clash/rules.yaml  << EOF
 - DOMAIN-SUFFIX,r2.cloudflarestorage.com,DIRECT
 - DOMAIN-SUFFIX,koofr.net,DIRECT
 - DOMAIN-SUFFIX,pcloud.com,DIRECT
-## 微软
-- DOMAIN-SUFFIX,www.bing.com,DIRECT
-- DOMAIN-SUFFIX,cn.bing.com,DIRECT
+## 微软 补充规则
+- DOMAIN-SUFFIX,www.bing.com,🚀 节点选择
+#- DOMAIN-SUFFIX,cn.bing.com,DIRECT
+- DOMAIN-SUFFIX,cn.bing.com,🚀 节点选择
 - DOMAIN-SUFFIX,live.com,DIRECT
+- DOMAIN-SUFFIX,microsoftonline.cn,DIRECT
+- DOMAIN-SUFFIX,sharepoint.cn,DIRECT
 ## DDNS
 - DOMAIN-SUFFIX,checkip.dyndns.org,DIRECT
 - DOMAIN-SUFFIX,checkipv6.dyndns.org,DIRECT
@@ -46,6 +49,9 @@ cat > /etc/clash/rules.yaml  << EOF
 - DOMAIN-SUFFIX,ipapi.co,DIRECT
 - DOMAIN-SUFFIX,ip6.seeip.org,DIRECT
 - DOMAIN-SUFFIX,members.3322.org,DIRECT
+## eu.org
+- DOMAIN-SUFFIX,nic.eu.org,🚀 节点选择
+- DOMAIN-SUFFIX,eu.org,DIRECT
 ## leiyanhui
 - DOMAIN-SUFFIX,dev.leiyanhui.com,🚀 节点选择
 - DOMAIN-SUFFIX,doc.shiyuxin.ltd,🚀 节点选择
