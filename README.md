@@ -51,6 +51,8 @@ fc-cache -f
 
 ### 一组壁纸
 
+https://pan.jia.leiyanhui.com:50443/wl/?id=QaB5FeLn1hw20CAhDEgRXl09KLoriioh
+
 [https://github.com/joyanhui/file.leiyanhui.com/tree/dwm-wallpaper](https://github.com/joyanhui/file.leiyanhui.com/tree/dwm-wallpaper)
 
             #wget -c https://github.com/joyanhui/file.leiyanhui.com/archive/refs/heads/dwm-wallpaper.zip
