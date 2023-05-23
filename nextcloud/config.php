@@ -1,0 +1,48 @@
+<?php
+$CONFIG = array (
+  'instanceid' => 'XXXXXXXXXXXXXX',
+  'passwordsalt' => '/XXXXXXXXX/s+XXXX/XXXXXXX',
+  'secret' => 'XXXXXXX/XXXXXXXXXXXXXX/XXXXXXXXXX',
+  'trusted_domains' =>
+   [
+    '10.1.1.203:9901',
+    'XXXX.XXXX.leiyanhui.com',
+    'XXXXXXXXXXX.eu.org',
+    '[2001:db8::1]'
+  ],
+  'overwriteprotocol' => 'http',
+  'datadirectory' => '/www/wwwroot/nextcloud.com/data',
+  'dbtype' => 'mysql',
+  'version' => '26.0.1.1',
+  'overwrite.cli.url' => 'http://10.1.1.203:9901',
+  'dbname' => 'nextcloud',
+  'dbhost' => 'localhost',
+  'dbport' => '',
+  'dbtableprefix' => 'oc_',
+  'mysql.utf8mb4' => true,
+  'dbuser' => 'nextcloud',
+  'dbpassword' => 'XXXXXXXXXXXXXXXXXX',
+  'installed' => true,
+  'default_phone_region' => 'CN',
+  'filesystem_check_changes' => true,
+  'localstorage.allowsymlinks' => true,
+  'memcache.local' => '\\OC\\Memcache\\Redis',
+  'memcache.distributed' => '\\OC\\Memcache\\Redis',
+  'filelocking.enabled' => 'true',
+  'memcache.locking' => '\\OC\\Memcache\\Redis',
+  'redis' => 
+  array (
+    'host' => '127.0.0.1',
+    'port' => 6379,
+  ),
+  'mail_from_address' => 'XXXXX',
+  'mail_smtpmode' => 'smtp',
+  'mail_sendmailmode' => 'smtp',
+  'mail_domain' => 'qq.com',
+  'mail_smtpsecure' => 'ssl',
+  'mail_smtphost' => 'smtp.qq.com',
+  'mail_smtpport' => '465',
+  'mail_smtpauth' => 1,
+  'mail_smtpname' => 'XXXXX@qq.com',
+  'mail_smtppassword' => 'XXXXXXXXXXXXXXXX',
+);
