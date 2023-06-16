@@ -4,8 +4,7 @@ title: '个人导航'
 # file.leiyanhui.com
 file.leiyanhui.com
 
-个人项目的静态文件，国内走腾讯cdn，境外直接github pages
-
+国内通道关闭，直接强制走境外github
 
 基于dnspod 分流和 cdn加速
 ## 私密仓库
