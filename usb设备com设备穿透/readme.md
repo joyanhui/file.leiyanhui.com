@@ -1,9 +1,15 @@
-# usb_network_gate 9  
+# usb_network_gate 
 不要升级 ，可以走公网也可以局域网
 
 usb_network_gate 客户端是可以一直免费试用的。
 
-linux macos 之间互相共享   直接用  nc重定向/dev/xxxx 即可
+usb_network_gate.exe  是windows下 9.0.2236 版官方版本，支持win7-win11 
+
+love里面是 X
+
+# linux macos 之间互相
+
+直接用  nc重定向/dev/xxxx 即可
 
 # win和win之间 
 使用usb_network_gate 
