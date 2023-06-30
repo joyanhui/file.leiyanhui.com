@@ -14,10 +14,13 @@ https://github.com/joyanhui/ssl
 ## 公开文件
 
 ### 常用的一个公钥  私钥不在这
-
-https://file.leiyanhui.com/linux.pub 
-
-
+```
+mkdir ~/.ssh
+cat ~/.ssh/authorized_keys
+wget https://file.leiyanhui.com/linux.pub   -O ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+cat ~/.ssh/authorized_keys
+```
 ## 分支
 
 ### windows 字体
