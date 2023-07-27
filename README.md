@@ -49,6 +49,13 @@ wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/
 pacman -Rcns wqy-zenhei
 fc-cache -f
 ```
+#### AppleColorEmoji
+```
+su
+mkdir /usr/share/fonts/emoji && cd mkdir /usr/share/fonts/emoji
+wget https://github.com/samuelngs/apple-emoji-linux/releases/download/v16.4/AppleColorEmoji.ttf
+fc-cache -f
+```
             
 
 ### 一组壁纸
