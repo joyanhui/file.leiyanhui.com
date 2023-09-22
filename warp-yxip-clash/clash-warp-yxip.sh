@@ -68,13 +68,10 @@ EOF
     cat  header.yaml.txt footer.yaml.txt  > clash-warp.yaml
     rm -f header.yaml.txt footer.yaml.txt
     green "clash-warp.yaml 创建完成，可以直接被clash-tun使用"
-    yellow "onpenwrt openclash 更新命令 ："
-    green "  rm -f /etc/openclash/config/clash-warp.yaml"
-    green "  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml"
-    green "  service openclash reload"
-    green "  service openclash restart #reload有时候不生效"
-    green " cd  /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4  XXX XXXXXX
-  && rm -f /etc/openclash/config/clash-warp.yaml &&  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml  && service openclash restart"
+    yellow "onpenwrt openclash 可以加到计划任务中 ："
+    green "0 7 * * * cd  /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4 $Pub_key $Pri_key
+  && rm -f /etc/openclash/config/clash-warp.yaml &&  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml  && service openclash restart
+"
     # 删除 WARP Endpoint IP 优选工具及其附属文件
     #rm -f warp ip.txt
     rm -f ip.txt
