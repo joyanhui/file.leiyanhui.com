@@ -1,11 +1,13 @@
-### 基本说明
+## 基本说明
 源自： [warp-yxip](https://gitlab.com/Misaka-blog/warp-script/)
 
 自动为 clash/openclash 创建warp/warp+ 配置文件，可以使用 clash/openclash 的分流规则。
 简单修改一下，也可以附加到现有订阅文件上面。
 
+默认选择15个速度最快的节点。  
 
-使用方法 
+
+## 使用方法 
 ### linux 或openwrt
 ```
 opkg install wget bash #openwrt
