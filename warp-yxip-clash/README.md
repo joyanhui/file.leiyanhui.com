@@ -1,14 +1,12 @@
-## 基本说明
-源自： [warp-yxip](https://gitlab.com/Misaka-blog/warp-script/)
-
+# 自动为clash创建cloudflare warp节点
+利用clash-tun支持wireguard 以及 cloudflare warp实际是基于wireguard的特点。 
 自动为 clash/openclash 创建warp/warp+ 配置文件，可以使用 clash/openclash 的分流规则。
+## 基本说明
 简单修改一下，也可以附加到现有订阅文件上面。
-
 默认选择15个速度最快的节点。  
-
-
 ## 使用方法 
-### linux 或openwrt
+下面主要是基于openwrt amd64,其他环境也一样。
+需要bash 和 wget nano/vi 没有别的依赖
 ```
 opkg install wget bash #openwrt
 apt install wget bash #debian ubuntu
@@ -52,3 +50,7 @@ clash需要用tun内核
 0 7 * * * cd /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4 XXXXXXXX= XXXXXXXXX= && rm -f /etc/openclash/config/clash-warp.yaml && cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml && service openclash restart
 
 ```
+
+### 源自
+本脚本源自： [warp-yxip](https://gitlab.com/Misaka-blog/warp-script/)
+
