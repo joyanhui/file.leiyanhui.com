@@ -31,7 +31,7 @@ archAffix(){
 endpointyx(){    
 
     if [ -e ./warp ]; then
-        echo "warp工具存在跳过下载warp工具 直接开始测试"
+        echo "warp工具存在跳过下载warp工具 直接开始"
     else
         echo "warp工具不存在 下载warp工具..."
         # 下载优选工具软件，感谢某匿名网友的分享的优选工具
