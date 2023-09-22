@@ -45,12 +45,11 @@ endpointyx(){
     # 取消 Linux 自带的线程限制，以便生成优选 Endpoint IP
     ulimit -n 102400
     
-    # 启动 WARP Endpoint IP 优选工具
+    echo "启动 WARP Endpoint IP 优选工具..."
     chmod +x warp && ./warp >/dev/null 2>&1
-    
-    # 显示前十个优选 Endpoint IP 及使用方法
-    green "当前最优 Endpoint IP 结果如下，并已保存至 result.csv中 ："
+    green "测试完成 当前最优 Endpoint IP 结果如下，并已保存至 result.csv中 ："
     cat result.csv | awk -F, '$3!="timeout ms" {print} ' | sort -t, -nk2 -nk3 | uniq | head -16 | awk -F, '{print "端点 "$1" 丢包率 "$2" 平均延迟 "$3}'
+    echo "========================"
     green "格式化到 clash-warp.yaml"
 #output=$(cat result.csv | awk -F, 'NR>1 && $3!="timeout ms" {print}' | sort -t, -nk2 -nk3 | uniq | head -15 | awk -F, '{split($1, ip_port, ":"); print "warp"NR"  "ip_port[1]" "ip_port[2]" "ENVIRON["Pub_key"]" "ENVIRON["Pri_key"]" "}')
     output=$(cat result.csv | awk -F, 'NR>1 && $3!="timeout ms" {print}' | sort -t, -nk2 -nk3 | uniq | head -15 | awk -F, '{split($1, ip_port, ":"); print "  - {name:  ⚡"NR",type: wireguard,server: "ip_port[1]",port: "ip_port[2]",ip: 172.16.0.2,public-key: "ENVIRON["Pub_key"]",private-key: "ENVIRON["Pri_key"]",mtu: 1280,udp: true}"}')
@@ -67,16 +66,18 @@ EOF
     echo "$output" >> header.yaml.txt
     footer #创建后半部分
     cat  header.yaml.txt footer.yaml.txt  > clash-warp.yaml
-    green "clash-warp.yaml 可以直接被clash-tun使用"
+    rm -f header.yaml.txt footer.yaml.txt
+    green "clash-warp.yaml 创建完成，可以直接被clash-tun使用"
     yellow "onpenwrt openclash 更新命令 ："
     green "  rm -f /etc/openclash/config/clash-warp.yaml"
     green "  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml"
     green "  service openclash reload"
     green "  service openclash restart #reload有时候不生效"
+    green " cd  /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4  XXX XXXXXX
+  && rm -f /etc/openclash/config/clash-warp.yaml &&  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml  && service openclash restart"
     # 删除 WARP Endpoint IP 优选工具及其附属文件
     #rm -f warp ip.txt
     rm -f ip.txt
-    rm -f header.yaml.txt footer.yaml.txt
 
 }
 
