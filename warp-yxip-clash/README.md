@@ -24,3 +24,8 @@ clash需要用tun内核
 计划任务添加
  cd  /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4 {public-key}  {private-key}  && rm -f /etc/openclash/config/clash-warp.yaml &&  cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml && service openclash restart
 ```
+例如
+```
+0 7 * * * cd /opt/clash-warp-yxip && bash clash-warp-yxip.sh v4 XXXXXXXX= XXXXXXXXX= && rm -f /etc/openclash/config/clash-warp.yaml && cp clash-warp.yaml /etc/openclash/config/clash-warp.yaml && service openclash restart
+
+```
