@@ -1,6 +1,7 @@
 # 自动为clash创建cloudflare warp节点
 利用clash-tun支持wireguard 以及 cloudflare warp实际是基于wireguard的特点。 
-自动为 clash/openclash 创建warp/warp+ 配置文件，可以使用 clash/openclash 的分流规则。
+自动为 clash/openclash 创建warp/warp+ 配置文件，同时使用优选ip连接到warp/warp+。
+可以完美契合clash的规则和urltest再次选择速度最快的可用线路。  
 ## 基本说明
 简单修改一下，也可以附加到现有订阅文件上面。
 默认选择15个速度最快的节点。  
