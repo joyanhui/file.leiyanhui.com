@@ -13,29 +13,30 @@
 opkg install wget bash #openwrt
 apt install wget bash #debian ubuntu
 ```
+###  获取public-key 和 private-key
+使用 [wgcf](https://github.com/ViRb3/wgcf/) 获取public-key 和 private-key 
+
+```bash
+wget  https://github.com/ViRb3/wgcf/releases/download/v2.2.19/wgcf_2.2.19_linux_amd64 
+mv wgcf_2.2.19_linux_amd64 cf && chmod +x cf
+./cf register #注册
+./cf generate #生成配置文件
+nano wgcf-account.toml #license_key 修改成你的warp+的收费/推广license_key
+#更新重新生成
+./cf update
+./cf generate
+./cf status
+cat wgcf-profile.conf
+```
+查看wgcf-profile.conf 文件里面的 PublicKey 和  PrivateKey 
 ### 下载脚本
 ```
 mkdir -p /opt/clash-warp-yxip && cd  /opt/clash-warp-yxip #任意目录均可
 wget -N https://ghproxy.com/https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/main/warp-yxip-clash/clash-warp-yxip.sh
 ```
-###  获取public-key 和 private-key
-使用 [wgcf](https://github.com/ViRb3/wgcf/) 获取public-key 和 private-key 
 
-```
-wget  https://github.com/ViRb3/wgcf/releases/download/v2.2.19/wgcf_2.2.19_linux_amd64 
-
-mv wgcf_2.2.19_linux_amd64 cf && chmod +x cf
-
-./cf register #注册
-./cf generate #生成配置文件
-nano wgcf-account.toml #license_key 修改成你的warp+的收费lecense
-#更新
-./cf update
-./cf generate
-./cf status
-```
-查看wgcf-profile.conf 文件里面的 PublicKey 和  PrivateKey 
 ### 执行
+开始优选ip，拿到速度最快的15个节点并生产clash配置文件
 ```
 bash clash-warp-yxip.sh v4 {public-key}  {private-key}
 ```
