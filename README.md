@@ -49,6 +49,14 @@ wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/
 pacman -Rcns wqy-zenhei
 fc-cache -f
 ```
+#### 苹果方体
+```bash
+su
+mkdir /usr/share/fonts/apple && cd /usr/share/fonts/apple
+wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/PingFang_SC.ttf
+fc-cache -f
+apt purge fonts-wqy-zenhei
+```
 #### AppleColorEmoji
 ```
 su
