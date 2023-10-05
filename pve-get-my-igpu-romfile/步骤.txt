@@ -1,0 +1,13 @@
+1、winpe/win 运行 afu 提取主板bios 主板bios文件放到 UBU目录  文件名 bios.rom
+
+2、运行ubu的 UBU.bat  等待，如卡太久点几下回车，一次选择 2显卡 S 导出
+
+3、 从ubu目录的 Extracted\GOP\XXXX 目录复制 IntelGopDriver.efi  到 tools 目录 可以改名为 例如 IntelGopDriver_form_UBU_9900t.efi
+
+4、 编辑 大大帅的一键生成直通Vbios.bat  注释掉掉其他命令 添加一行
+
+"%~dp0tools/EfiRom.exe" -f 0xffff -i 0xffff -ec tools/IntelGopDriver_form_UBU_9900t.efi tools/IgdAssignmentDxe.efi tools/PlatformGOPPolicy.efi -o i9900t.rom
+
+不同平台稍微差异 参考他的来弄
+
+
