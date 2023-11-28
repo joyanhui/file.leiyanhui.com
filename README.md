@@ -46,7 +46,8 @@ mkdir /usr/share/fonts/WindowsFonts && cd /usr/share/fonts/WindowsFonts
 wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyh.ttc
 wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyhbd.ttc
 wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyhl.ttc
-pacman -Rcns wqy-zenhei
+# 或者
+wget https://raw.githubusercontent.com/joyanhui/file.leiyanhui.com/windows_font/msyh.ttf
 fc-cache -f
 ```
 #### 苹果方体
